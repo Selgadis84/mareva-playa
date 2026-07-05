@@ -52,9 +52,13 @@ Formspree sends a confirmation email. It must reach `reservas@`:
 
 **If email doesn't arrive:**
 
-- Check Google Group `reservas@` has members and accepts external mail.
+- In **Google Groups** → `reservas@` settings → **Post permissions** must allow **Anyone on the internet** (or Formspree verification and submissions will bounce silently).
+- Check the group has at least one member who receives mail.
+- Check spam folder for Formspree confirmation.
 - Try notification to `selgadis84@gmail.com` temporarily, then switch after debugging.
 - Do **not** go live on production domain until form delivery works.
+
+**Formspree free tier:** 50 submissions/month. Sufficient for inquiry-only launch; upgrade if volume grows.
 
 ### 1.3 Save form ID
 
@@ -124,6 +128,10 @@ Optional later:
 
 **Gate:** Build succeeds; preview URL loads homepage.
 
+**Expected on preview:** Canonical URLs, sitemap, and OG tags reference `https://marevaplaya.com.mx` (hardcoded in `astro.config.mjs`). That is correct — preview is for content/functionality testing, not SEO. Do not submit the preview sitemap to Search Console.
+
+**After setup:** Every push to `main` auto-redeploys Production. Preview deployments also run on PRs if enabled.
+
 ---
 
 ## Phase 3 — Smoke test + parent sign-off (30 min)
@@ -148,6 +156,8 @@ Test on **`https://mareva-playa.pages.dev`** (not localhost).
 | 12 | Contact form submit | lands in `reservas@` inbox | ☐ |
 | 13 | 404 page | `/this-does-not-exist` | ☐ |
 | 14 | Mobile layout | phone or narrow browser | ☐ |
+| 15 | Sitemap | `/sitemap-index.xml` returns XML (URLs will show `.com.mx`) | ☐ |
+| 16 | Security headers | DevTools → Response headers on any page | ☐ |
 
 ### 3.2 Parent sign-off (blocker for Phase 4)
 
@@ -168,9 +178,10 @@ Share preview URL. Parents must confirm:
 
 ### 4.0 BEFORE touching DNS
 
-1. Complete [DNS-SNAPSHOT-TEMPLATE.md](./DNS-SNAPSHOT-TEMPLATE.md).
+1. Complete [DNS-SNAPSHOT-TEMPLATE.md](./DNS-SNAPSHOT-TEMPLATE.md) — **including current web A/CNAME records** (what does `marevaplaya.com.mx` point to today?).
 2. Screenshot all MX records in Google Admin.
 3. Pick **canonical URL:** `https://marevaplaya.com.mx` (apex, no www).
+4. **Optional (recommended):** 24 h before cutover, lower TTL on existing web records to 300 s if Google DNS allows — faster rollback if something goes wrong.
 
 ### 4.1 Add custom domains in Cloudflare Pages
 
@@ -220,11 +231,14 @@ In Cloudflare Pages → custom domains:
 
 ## Phase 5 — Search & Google Business (20 min)
 
+**Only after Phase 4 gate passed** (site live on production domain).
+
 1. [Google Search Console](https://search.google.com/search-console) → add property `https://marevaplaya.com.mx`
-2. Verify via DNS TXT (Google gives you a record) or HTML file
-3. Submit sitemap: `https://marevaplaya.com.mx/sitemap-index.xml`
+2. Verify via DNS TXT (Google gives you a record — **add in Google DNS alongside existing records; do not remove MX/SPF**)
+3. Submit sitemap: `https://marevaplaya.com.mx/sitemap-index.xml` (not the `.pages.dev` URL)
 4. **Google Business Profile** → update website to `https://marevaplaya.com.mx`
 5. Replace Google Reviews footer link with exact GBP URL when available
+6. Request indexing for homepage (optional, speeds discovery)
 
 ---
 
@@ -248,6 +262,9 @@ In Cloudflare Pages → custom domains:
 4. **Going live before parent price sign-off** → wrong prices public
 5. **Forgetting env vars on Preview** → PR previews have broken forms
 6. **Using SEMSEO `.com` as canonical** → split SEO; always canonical `.com.mx`
+7. **Google Group blocks external senders** → Formspree never delivers; fix group post permissions first
+8. **Submitting preview sitemap to Search Console** → wrong URLs indexed; wait until Phase 5 on production
+9. **Cutover during business hours without rollback plan** → fill DNS snapshot first
 
 ---
 
