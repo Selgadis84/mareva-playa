@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { getUi } from '../i18n';
+import site from '../data/site.json';
+
+const locale = 'es' as const;
+const t = getUi(locale);
+const lastUpdated = '5 de julio de 2026';
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t.pages.privacy.title} — Mareva Playa`}
+  description={t.pages.privacy.description}
+  currentPath="/aviso-de-privacidad"
+>
+  <PageHero title={t.pages.privacy.title} />
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <p class="text-sm text-ocean-700">Última actualización: {lastUpdated}</p>
+
+    <h2 class="mt-10 text-xl text-ocean-900">1. Responsable</h2>
+    <p class="text-ocean-800/90">
+      Mareva Playa, con domicilio en {site.address.es}, es responsable del tratamiento de sus datos personales.
+      Contacto: <a href={`mailto:${site.email.info}`} class="text-ocean-700 underline">{site.email.info}</a>.
+    </p>
+
+    <h2 class="mt-10 text-xl text-ocean-900">2. Datos que recabamos</h2>
+    <p class="text-ocean-800/90">
+      A través del formulario de contacto y medios de comunicación recabamos: nombre, correo electrónico, teléfono,
+      fechas de estancia propuestas y mensaje. Estos datos se utilizan exclusivamente para atender solicitudes de
+      información y reservación.
+    </p>
+
+    <h2 class="mt-10 text-xl text-ocean-900">3. Finalidades</h2>
+    <ul class="mt-4 list-disc space-y-2 pl-6 text-ocean-800/90">
+      <li>Responder consultas y solicitudes de reservación.</li>
+      <li>Comunicarnos por correo, teléfono o WhatsApp respecto a su estancia.</li>
+      <li>Cumplir obligaciones legales aplicables.</li>
+    </ul>
+
+    <h2 class="mt-10 text-xl text-ocean-900">4. Transferencia de datos</h2>
+    <p class="text-ocean-800/90">
+      No vendemos ni compartimos sus datos con terceros con fines comerciales. Podemos utilizar proveedores de
+      servicios (por ejemplo, procesamiento de formularios) que actúan como encargados bajo contrato de confidencialidad.
+    </p>
+
+    <h2 class="mt-10 text-xl text-ocean-900">5. Derechos ARCO</h2>
+    <p class="text-ocean-800/90">
+      Usted puede acceder, rectificar, cancelar u oponerse al tratamiento de sus datos, así como revocar su consentimiento,
+      enviando solicitud a <a href={`mailto:${site.email.info}`} class="text-ocean-700 underline">{site.email.info}</a>. También puede presentar una
+      queja ante el INAI.
+    </p>
+
+    <h2 class="mt-10 text-xl text-ocean-900">6. Conservación</h2>
+    <p class="text-ocean-800/90">
+      Conservaremos sus datos el tiempo necesario para las finalidades descritas y conforme a la legislación aplicable
+      (LFPDPPP y su reglamento).
+    </p>
+
+    <h2 class="mt-10 text-xl text-ocean-900">7. Cookies y analítica</h2>
+    <p class="text-ocean-800/90">
+      Este sitio puede utilizar analítica respetuosa de la privacidad (por ejemplo, Cloudflare Web Analytics) sin cookies
+      de seguimiento invasivas. El formulario puede incluir protección anti-spam (Cloudflare Turnstile).
+    </p>
+
+    <h2 class="mt-10 text-xl text-ocean-900">8. Cambios</h2>
+    <p class="text-ocean-800/90">
+      Nos reservamos el derecho de actualizar este aviso. La versión vigente estará siempre publicada en esta página.
+    </p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { getUi } from '../../i18n';
+import gallery from '../../data/gallery.json';
+
+const locale = 'en' as const;
+const t = getUi(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t.pages.gallery.title} — Mareva Playa`}
+  description={t.pages.gallery.description}
+  currentPath="/en/gallery"
+>
+  <PageHero title={gallery.title.en} subtitle={gallery.subtitle.en} />
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <p class="mb-8 text-center text-sm text-ocean-700/80">{gallery.placeholderNote.en}</p>
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      {
+        gallery.images.map((img) => (
+          <div
+            class="group relative aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-ocean-700 via-ocean-600 to-ocean-800"
+            role="img"
+            aria-label={img.alt.en}
+          >
+            <span class="absolute inset-x-0 bottom-0 bg-ocean-900/60 p-3 text-xs text-sand-50 opacity-0 transition group-hover:opacity-100">
+              {img.alt.en}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

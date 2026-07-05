@@ -1,0 +1,24 @@
+{
+  "title": {
+    "es": "Galería",
+    "en": "Gallery"
+  },
+  "subtitle": {
+    "es": "Un vistazo a tu descanso",
+    "en": "A glimpse of your getaway"
+  },
+  "placeholderNote": {
+    "es": "Fotografías profesionales próximamente",
+    "en": "Professional photos coming soon"
+  },
+  "images": [
+    { "src": "/images/gallery/01.svg", "alt": { "es": "Vista al mar", "en": "Ocean view" } },
+    { "src": "/images/gallery/02.svg", "alt": { "es": "Terraza y alberca", "en": "Terrace and pool" } },
+    { "src": "/images/gallery/03.svg", "alt": { "es": "Habitación principal", "en": "Master bedroom" } },
+    { "src": "/images/gallery/04.svg", "alt": { "es": "Área común", "en": "Common area" } },
+    { "src": "/images/gallery/05.svg", "alt": { "es": "Restaurante y bar", "en": "Restaurant and bar" } },
+    { "src": "/images/gallery/06.svg", "alt": { "es": "Balcón privado", "en": "Private balcony" } },
+    { "src": "/images/gallery/07.svg", "alt": { "es": "Playa y atardecer", "en": "Beach and sunset" } },
+    { "src": "/images/gallery/08.svg", "alt": { "es": "Suite de lujo", "en": "Luxury suite" } }
+  ]
+}

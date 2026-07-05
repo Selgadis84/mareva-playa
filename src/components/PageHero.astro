@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  large?: boolean;
+}
+
+const { title, subtitle, large = false } = Astro.props;
+---
+
+<section class="bg-gradient-to-br from-ocean-800 via-ocean-700 to-ocean-600 text-sand-50">
+  <div class:list={['mx-auto max-w-6xl px-4 sm:px-6', large ? 'py-20 md:py-28' : 'py-14 md:py-16']}>
+    <h1 class:list={['text-balance font-display font-semibold', large ? 'text-4xl md:text-5xl lg:text-6xl' : 'text-3xl md:text-4xl']}>
+      {title}
+    </h1>
+    {subtitle && <p class="mt-4 max-w-2xl text-lg text-sand-100/90">{subtitle}</p>}
+  </div>
+</section>

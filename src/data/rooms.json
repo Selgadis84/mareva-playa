@@ -1,0 +1,82 @@
+[
+  {
+    "id": "ocean-view",
+    "slug": { "es": "ocean-view", "en": "ocean-view" },
+    "name": {
+      "es": "Depto con balcón y vista al mar",
+      "en": "Ocean-view apartment with private balcony"
+    },
+    "description": {
+      "es": "Departamento con balcón privado y vista al mar. Ideal para familias o grupos que buscan espacio y comodidad frente al Pacífico.",
+      "en": "Apartment with private balcony and ocean view. Ideal for families or groups seeking space and comfort facing the Pacific."
+    },
+    "priceMxn": 2800,
+    "capacity": 6,
+    "beds": {
+      "es": "2 camas matrimoniales y 2 individuales",
+      "en": "2 double beds and 2 single beds"
+    },
+    "image": "/images/rooms/ocean-view.svg",
+    "featured": true
+  },
+  {
+    "id": "standard",
+    "slug": { "es": "standard", "en": "standard" },
+    "name": {
+      "es": "Estándar",
+      "en": "Standard"
+    },
+    "description": {
+      "es": "Espacioso departamento ideal para cuatro personas. Comodidad y privacidad en Acapulco Diamante.",
+      "en": "Spacious apartment ideal for four guests. Comfort and privacy in Acapulco Diamante."
+    },
+    "priceMxn": 2500,
+    "capacity": 4,
+    "beds": {
+      "es": "2 camas matrimoniales",
+      "en": "2 double beds"
+    },
+    "image": "/images/rooms/standard.svg",
+    "featured": true
+  },
+  {
+    "id": "king",
+    "slug": { "es": "king", "en": "king" },
+    "name": {
+      "es": "King — 2 personas",
+      "en": "King — 2 guests"
+    },
+    "description": {
+      "es": "Acogedor espacio con cama King, perfecto para parejas en escapada romántica frente al mar.",
+      "en": "Cozy space with a King bed, perfect for couples on a romantic getaway by the sea."
+    },
+    "priceMxn": 1800,
+    "capacity": 2,
+    "beds": {
+      "es": "1 cama King",
+      "en": "1 King bed"
+    },
+    "image": "/images/rooms/king.svg",
+    "featured": true
+  },
+  {
+    "id": "deluxe",
+    "slug": { "es": "deluxe", "en": "deluxe" },
+    "name": {
+      "es": "Deluxe",
+      "en": "Deluxe"
+    },
+    "description": {
+      "es": "Departamento deluxe con acceso privado a su habitación. Ideal para cuatro personas con máximo confort.",
+      "en": "Deluxe apartment with private room access. Ideal for four guests with maximum comfort."
+    },
+    "priceMxn": 2500,
+    "capacity": 4,
+    "beds": {
+      "es": "2 camas matrimoniales, 1 King, acceso privado",
+      "en": "2 double beds, 1 King, private access"
+    },
+    "image": "/images/rooms/deluxe.svg",
+    "featured": true
+  }
+]

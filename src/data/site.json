@@ -1,0 +1,59 @@
+{
+  "name": "Mareva Playa",
+  "domain": "https://marevaplaya.com.mx",
+  "tagline": {
+    "es": "¡Tu Playa, tu Casa, tu Experiencia!",
+    "en": "Your Beach, Your Home, Your Experience!"
+  },
+  "headline": {
+    "es": "Suites, PentHouses y Deptos de Lujo",
+    "en": "Suites, Penthouses & Luxury Apartments"
+  },
+  "intro": {
+    "es": "Bienvenido a Mareva, el concepto más exclusivo de hotel y departamentos en Acapulco Diamante. Disfrute de una estancia de lujo, total privacidad y una ubicación privilegiada frente al Océano Pacífico.",
+    "en": "Welcome to Mareva, the most exclusive hotel and apartment concept in Acapulco Diamante. Enjoy a luxury stay, total privacy, and a privileged location facing the Pacific Ocean."
+  },
+  "familySection": {
+    "es": {
+      "title": "Relájate en familia",
+      "subtitle": "¡Sol, Playa, Arena y Mareva!",
+      "body": "Ofrecemos una experiencia única diseñada para quienes buscan privacidad, servicio de primer nivel y vistas que te roban el aliento. Cada detalle está pensado para transformar tu estancia en un recuerdo inolvidable."
+    },
+    "en": {
+      "title": "Relax with family",
+      "subtitle": "Sun, Beach, Sand & Mareva!",
+      "body": "We offer a unique experience designed for those seeking privacy, first-class service, and breathtaking views. Every detail is crafted to turn your stay into an unforgettable memory."
+    }
+  },
+  "phone": "+527445860428",
+  "phoneDisplay": "+52 744 586 0428",
+  "whatsapp": "527445860428",
+  "email": {
+    "info": "info@marevaplaya.com.mx",
+    "reservations": "reservas@marevaplaya.com.mx",
+    "reservationsAlias": "reservaciones@marevaplaya.com.mx"
+  },
+  "address": {
+    "es": "Lázaro Cárdenas 231, Alfredo V Bonfil, Aeropuerto, 39893 Acapulco de Juárez, Gro.",
+    "en": "Lázaro Cárdenas 231, Alfredo V Bonfil, Aeropuerto, 39893 Acapulco de Juárez, Guerrero, Mexico"
+  },
+  "coordinates": {
+    "lat": 16.7622,
+    "lng": -99.8236
+  },
+  "googleMapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3776.8!2d-99.8236!3d16.7622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDQ1JzQzLjkiTiA5OcKwNDknMjUuMCJX!5e0!3m2!1ses!2smx!4v1",
+  "googleMapsUrl": "https://maps.google.com/?q=Lázaro+Cárdenas+231+Acapulco+Diamante",
+  "googleReviewsUrl": "https://www.google.com/maps/search/Mareva+Playa+Acapulco",
+  "reservationPolicy": {
+    "es": "Para reservar debes depositar una noche de hospedaje. También puedes enviarnos un mensaje por WhatsApp.",
+    "en": "To reserve, a deposit of one night's stay is required. You may also message us on WhatsApp."
+  },
+  "checkInOut": {
+    "es": "Check-in: 3:00 PM · Check-out: 12:00 PM (confirmar con el hotel)",
+    "en": "Check-in: 3:00 PM · Check-out: 12:00 PM (confirm with hotel)"
+  },
+  "directions": {
+    "es": "Desde el Aeropuerto Internacional de Acapulco (ACA), tome la carretera hacia Acapulco Diamante. Mareva Playa está en la zona Diamante, frente al Pacífico, aproximadamente 10 minutos del aeropuerto.",
+    "en": "From Acapulco International Airport (ACA), take the road toward Acapulco Diamante. Mareva Playa is in the Diamante zone, facing the Pacific, approximately 10 minutes from the airport."
+  }
+}

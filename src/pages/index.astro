@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import RoomCard from '../components/RoomCard.astro';
+import { getUi } from '../i18n';
+import { whatsappUrl, hotelJsonLd } from '../lib/utils';
+import site from '../data/site.json';
+import rooms from '../data/rooms.json';
+import amenities from '../data/amenities.json';
+import gallery from '../data/gallery.json';
+
+const locale = 'es' as const;
+const t = getUi(locale);
+const currentPath = '/';
+const contactHref = '/contacto';
+const featuredRooms = rooms.filter((r) => r.featured).slice(0, 3);
+const waMessage = 'Hola, me gustaría información sobre una reservación en Mareva Playa.';
+---
+
+<BaseLayout
+  locale={locale}
+  title={t.pages.home.title}
+  description={t.pages.home.description}
+  currentPath={currentPath}
+  jsonLd={hotelJsonLd(locale)}
+>
+  <PageHero title="Mareva Playa" subtitle={site.tagline.es} large />
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <h2 class="text-3xl text-ocean-900">{site.headline.es}</h2>
+        <p class="mt-4 text-lg leading-relaxed text-ocean-800/85">{site.intro.es}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href={whatsappUrl(site.whatsapp, waMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center rounded-lg bg-[#25D366] px-5 py-3 text-sm font-medium text-white transition hover:opacity-90"
+          >
+            {t.cta.whatsapp}
+          </a>
+          <a
+            href={contactHref}
+            class="inline-flex items-center rounded-lg border border-ocean-700 px-5 py-3 text-sm font-medium text-ocean-700 transition hover:bg-ocean-700 hover:text-white"
+          >
+            {t.cta.contact}
+          </a>
+        </div>
+      </div>
+      <div
+        class="flex min-h-[320px] items-end rounded-2xl bg-gradient-to-br from-ocean-600 to-ocean-800 p-8"
+        role="img"
+        aria-label="Vista al Pacífico, Acapulco Diamante"
+      >
+        <p class="text-sm text-sand-100/80">Acapulco Diamante · Océano Pacífico</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <h2 class="text-2xl text-ocean-900">{site.familySection.es.title}</h2>
+      <p class="mt-2 font-display text-xl text-ocean-700">{site.familySection.es.subtitle}</p>
+      <p class="mt-4 max-w-3xl text-ocean-800/85">{site.familySection.es.body}</p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="mb-10 flex items-end justify-between gap-4">
+      <h2 class="text-2xl text-ocean-900">{t.nav.rooms}</h2>
+      <a href="/alojamientos" class="text-sm font-medium text-ocean-700 hover:underline">{t.cta.viewRooms} →</a>
+    </div>
+    <div class="grid gap-8 md:grid-cols-3">
+      {
+        featuredRooms.map((room) => (
+          <RoomCard
+            room={room}
+            locale={locale}
+            labels={t.pages.rooms}
+            contactHref={contactHref}
+            reserveLabel={t.cta.reserve}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="bg-sand-100 py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <h2 class="text-2xl text-ocean-900">{t.pages.services.coreTitle}</h2>
+      <ul class="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+        {
+          amenities.core.map((a) => (
+            <li class="rounded-xl bg-white p-4 text-center text-sm font-medium text-ocean-800 shadow-sm">
+              {a.name.es}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="mb-8 flex items-end justify-between">
+      <h2 class="text-2xl text-ocean-900">{gallery.title.es}</h2>
+      <a href="/galeria" class="text-sm font-medium text-ocean-700 hover:underline">{t.cta.viewGallery} →</a>
+    </div>
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
+      {
+        gallery.images.slice(0, 4).map((img) => (
+          <div
+            class="aspect-square rounded-xl bg-gradient-to-br from-ocean-700 to-ocean-600"
+            role="img"
+            aria-label={img.alt.es}
+          />
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

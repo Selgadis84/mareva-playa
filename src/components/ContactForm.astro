@@ -1,0 +1,175 @@
+---
+import type { Locale } from '../i18n';
+import { getUi } from '../i18n';
+
+interface Props {
+  locale: Locale;
+  privacyHref: string;
+}
+
+const { locale, privacyHref } = Astro.props;
+const t = getUi(locale);
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID;
+const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const formAction = formspreeId ? `https://formspree.io/f/${formspreeId}` : undefined;
+---
+
+<form
+  action={formAction}
+  method="POST"
+  class="space-y-4"
+  id="contact-form"
+>
+  {formAction && <input type="hidden" name="_replyto" id="replyto-field" />}
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div>
+      <label for="name" class="mb-1 block text-sm font-medium text-ocean-800">{t.pages.contact.name}</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="w-full rounded-lg border border-sand-200 bg-white px-3 py-2 text-ocean-900 focus:border-ocean-600 focus:outline-none focus:ring-1 focus:ring-ocean-600"
+      />
+    </div>
+    <div>
+      <label for="email" class="mb-1 block text-sm font-medium text-ocean-800">{t.pages.contact.email}</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="w-full rounded-lg border border-sand-200 bg-white px-3 py-2 text-ocean-900 focus:border-ocean-600 focus:outline-none focus:ring-1 focus:ring-ocean-600"
+      />
+    </div>
+  </div>
+
+  <div class="grid gap-4 sm:grid-cols-3">
+    <div>
+      <label for="phone" class="mb-1 block text-sm font-medium text-ocean-800">{t.pages.contact.phone}</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        class="w-full rounded-lg border border-sand-200 bg-white px-3 py-2 text-ocean-900 focus:border-ocean-600 focus:outline-none focus:ring-1 focus:ring-ocean-600"
+      />
+    </div>
+    <div>
+      <label for="checkin" class="mb-1 block text-sm font-medium text-ocean-800">{t.pages.contact.checkIn}</label>
+      <input
+        type="date"
+        id="checkin"
+        name="check_in"
+        class="w-full rounded-lg border border-sand-200 bg-white px-3 py-2 text-ocean-900 focus:border-ocean-600 focus:outline-none focus:ring-1 focus:ring-ocean-600"
+      />
+    </div>
+    <div>
+      <label for="checkout" class="mb-1 block text-sm font-medium text-ocean-800">{t.pages.contact.checkOut}</label>
+      <input
+        type="date"
+        id="checkout"
+        name="check_out"
+        class="w-full rounded-lg border border-sand-200 bg-white px-3 py-2 text-ocean-900 focus:border-ocean-600 focus:outline-none focus:ring-1 focus:ring-ocean-600"
+      />
+    </div>
+  </div>
+
+  <div>
+    <label for="message" class="mb-1 block text-sm font-medium text-ocean-800">{t.pages.contact.message}</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="4"
+      required
+      class="w-full rounded-lg border border-sand-200 bg-white px-3 py-2 text-ocean-900 focus:border-ocean-600 focus:outline-none focus:ring-1 focus:ring-ocean-600"
+    ></textarea>
+  </div>
+
+  <div class="flex items-start gap-2">
+    <input type="checkbox" id="consent" name="consent" required class="mt-1" />
+    <label for="consent" class="text-sm text-ocean-800/90">
+      {t.pages.contact.consent}
+      <a href={privacyHref} class="text-ocean-700 underline">{t.footer.privacy}</a>
+    </label>
+  </div>
+
+  {
+    turnstileKey && (
+      <div
+        class="cf-turnstile"
+        data-sitekey={turnstileKey}
+        data-theme="light"
+      />
+    )
+  }
+
+  {
+    !formAction && (
+      <p class="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900">
+        {locale === 'es'
+          ? 'Configure PUBLIC_FORMSPREE_ID en las variables de entorno para activar el formulario.'
+          : 'Set PUBLIC_FORMSPREE_ID in environment variables to enable the form.'}
+      </p>
+    )
+  }
+
+  <button
+    type="submit"
+    disabled={!formAction}
+    class="w-full rounded-lg bg-ocean-700 px-6 py-3 font-medium text-white transition hover:bg-ocean-800 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+  >
+    {t.cta.send}
+  </button>
+
+  <p id="form-status" class="hidden text-sm" role="status"></p>
+</form>
+
+{
+  turnstileKey && (
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer />
+  )
+}
+
+<script define:vars={{ successMsg: t.pages.contact.success, errorMsg: t.pages.contact.error }}>
+  const form = document.getElementById('contact-form');
+  const emailInput = document.getElementById('email');
+  const replytoField = document.getElementById('replyto-field');
+  const status = document.getElementById('form-status');
+
+  emailInput?.addEventListener('change', () => {
+    if (replytoField && emailInput instanceof HTMLInputElement) {
+      replytoField.value = emailInput.value;
+    }
+  });
+
+  form?.addEventListener('submit', async (e) => {
+    if (!(form instanceof HTMLFormElement) || !form.action) return;
+    e.preventDefault();
+    if (replytoField && emailInput instanceof HTMLInputElement) {
+      replytoField.value = emailInput.value;
+    }
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      if (status) {
+        status.classList.remove('hidden', 'text-green-700', 'text-red-700');
+        if (res.ok) {
+          status.textContent = successMsg;
+          status.classList.add('text-green-700');
+          form.reset();
+        } else {
+          status.textContent = errorMsg;
+          status.classList.add('text-red-700');
+        }
+      }
+    } catch {
+      if (status) {
+        status.classList.remove('hidden');
+        status.textContent = errorMsg;
+        status.classList.add('text-red-700');
+      }
+    }
+  });
+</script>

@@ -1,0 +1,53 @@
+{
+  "core": [
+    {
+      "id": "cocktails",
+      "icon": "wine",
+      "name": { "es": "Coctelería", "en": "Cocktail bar" }
+    },
+    {
+      "id": "kitchen",
+      "icon": "utensils",
+      "name": { "es": "Cocina equipada", "en": "Equipped kitchen" }
+    },
+    {
+      "id": "restaurant",
+      "icon": "chef",
+      "name": { "es": "Restaurante", "en": "Restaurant" }
+    },
+    {
+      "id": "parking",
+      "icon": "car",
+      "name": { "es": "Estacionamiento", "en": "Parking" }
+    },
+    {
+      "id": "room-service",
+      "icon": "bell",
+      "name": { "es": "Servicio al cuarto", "en": "Room service" }
+    },
+    {
+      "id": "ac",
+      "icon": "snowflake",
+      "name": { "es": "Aire acondicionado", "en": "Air conditioning" }
+    },
+    {
+      "id": "balcony",
+      "icon": "sun",
+      "name": { "es": "Balcón privado", "en": "Private balcony" }
+    },
+    {
+      "id": "wifi",
+      "icon": "wifi",
+      "name": { "es": "Wi-Fi seguro", "en": "Secure Wi-Fi" }
+    }
+  ],
+  "experiences": [
+    { "id": "rooms", "name": { "es": "Habitaciones", "en": "Rooms" } },
+    { "id": "baths", "name": { "es": "Baños", "en": "Bathrooms" } },
+    { "id": "breakfast", "name": { "es": "Desayunos", "en": "Breakfast" } },
+    { "id": "pools", "name": { "es": "Albercas", "en": "Pools" } },
+    { "id": "massage", "name": { "es": "Masajes", "en": "Massages" } },
+    { "id": "lunch", "name": { "es": "Almuerzo", "en": "Lunch" } },
+    { "id": "events", "name": { "es": "Eventos", "en": "Events" } }
+  ]
+}

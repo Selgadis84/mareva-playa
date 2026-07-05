@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { getUi } from '../../i18n';
+import site from '../../data/site.json';
+
+const locale = 'en' as const;
+const t = getUi(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t.pages.location.title} — Mareva Playa`}
+  description={t.pages.location.description}
+  currentPath="/en/location"
+>
+  <PageHero title={t.pages.location.title} subtitle={site.address.en} />
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="overflow-hidden rounded-2xl shadow-lg ring-1 ring-sand-200">
+      <iframe
+        title="Mareva Playa map"
+        src={site.googleMapsEmbed}
+        width="100%"
+        height="450"
+        style="border:0;"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+    <div class="mt-10 max-w-3xl">
+      <h2 class="text-xl font-semibold text-ocean-900">{t.pages.location.directions}</h2>
+      <p class="mt-4 leading-relaxed text-ocean-800/85">{site.directions.en}</p>
+      <p class="mt-4 text-sm text-ocean-700">{site.checkInOut.en}</p>
+      <a
+        href={site.googleMapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-6 inline-flex text-sm font-medium text-ocean-700 hover:underline"
+      >
+        Google Maps →
+      </a>
+    </div>
+  </section>
+</BaseLayout>
