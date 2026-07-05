@@ -41,7 +41,7 @@
     "lat": 16.7622,
     "lng": -99.8236
   },
-  "googleMapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3776.8!2d-99.8236!3d16.7622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDQ1JzQzLjkiTiA5OcKwNDknMjUuMCJX!5e0!3m2!1ses!2smx!4v1",
+  "googleMapsEmbed": "https://maps.google.com/maps?q=L%C3%A1zaro+C%C3%A1rdenas+231,+Alfredo+V+Bonfil,+39893+Acapulco+de+Ju%C3%A1rez,+Gro.,+Mexico&hl=es&z=16&output=embed",
   "googleMapsUrl": "https://maps.google.com/?q=Lázaro+Cárdenas+231+Acapulco+Diamante",
   "googleReviewsUrl": "https://www.google.com/maps/search/Mareva+Playa+Acapulco",
   "reservationPolicy": {

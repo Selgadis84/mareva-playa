@@ -12,6 +12,8 @@ const t = getUi(locale);
 const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID;
 const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 const formAction = formspreeId ? `https://formspree.io/f/${formspreeId}` : undefined;
+const isProd = import.meta.env.PROD;
+const subject = locale === 'es' ? 'Consulta Mareva Playa' : 'Mareva Playa inquiry';
 ---
 
 <form
@@ -21,6 +23,8 @@ const formAction = formspreeId ? `https://formspree.io/f/${formspreeId}` : undef
   id="contact-form"
 >
   {formAction && <input type="hidden" name="_replyto" id="replyto-field" />}
+  {formAction && <input type="hidden" name="_subject" value={subject} />}
+  {formAction && <input type="hidden" name="locale" value={locale} />}
   <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
 
   <div class="grid gap-4 sm:grid-cols-2">
@@ -106,7 +110,7 @@ const formAction = formspreeId ? `https://formspree.io/f/${formspreeId}` : undef
   }
 
   {
-    !formAction && (
+    !formAction && !isProd && (
       <p class="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900">
         {locale === 'es'
           ? 'Configure PUBLIC_FORMSPREE_ID en las variables de entorno para activar el formulario.'

@@ -1,32 +1,54 @@
 # Launch checklist
 
-## Before DNS cutover (Phase 5A)
+**Use with:** [DEPLOY-RUNBOOK.md](./DEPLOY-RUNBOOK.md) (full sequence + gates)
 
-- [ ] Push repo to GitHub
-- [ ] Create Cloudflare Pages project (see [DEPLOY.md](./DEPLOY.md))
-- [ ] Set `PUBLIC_FORMSPREE_ID` in Cloudflare env vars
-- [ ] Optional: set `PUBLIC_TURNSTILE_SITE_KEY`
-- [ ] Test preview URL — all 15 pages load (ES + EN)
-- [ ] Test contact form on preview (Formspree confirmation email to `reservas@marevaplaya.com.mx`)
-- [ ] Parents sign-off on copy and room prices in `src/data/rooms.json`
+## Phase 0 — Code on GitHub
 
-## DNS cutover (Phase 5A)
+- [ ] Latest commit pushed to `main` on Selgadis84/mareva-playa
+- [ ] No `.env` file in repo (secrets only in Cloudflare)
 
-- [ ] Snapshot Google DNS MX/SPF/TXT records
-- [ ] Add Cloudflare Pages custom domain `marevaplaya.com.mx`
-- [ ] Add web CNAME/A in Google DNS only (do not touch MX)
-- [ ] Verify HTTPS at `https://marevaplaya.com.mx`
-- [ ] Send test email to `info@` and `reservas@` — confirm delivery
-- [ ] Google Search Console: add property, submit sitemap
-- [ ] Google Business Profile: update website URL
+## Phase 1 — Formspree
 
-## Deferred (Phase 5B)
+- [ ] Form created at formspree.io
+- [ ] Notifications → `reservas@marevaplaya.com.mx`
+- [ ] Formspree verification email received (if required)
+- [ ] Test submission arrives at `reservas@` Google Group
+- [ ] Form ID saved for Cloudflare env var
 
-- [ ] Identify `marevaplaya.com` registrar
-- [ ] Configure 301 redirects to `.com.mx` (see [redirects.md](./redirects.md))
-- [ ] Cancel SEMSEO hosting
+## Phase 2 — Cloudflare Pages preview
 
-## Post-launch
+- [ ] Cloudflare account created
+- [ ] GitHub connected; repo `Selgadis84/mareva-playa` selected
+- [ ] Build: `npm run build`, output `dist`, branch `main`
+- [ ] Env vars set (Production + Preview): `NODE_VERSION=22`, `PUBLIC_FORMSPREE_ID`
+- [ ] Build green; preview URL works (e.g. mareva-playa.pages.dev)
 
-- [ ] Monitor 404s for 2 weeks
-- [ ] Swap photos when ready (see [PHOTO-SWAP.md](./PHOTO-SWAP.md))
+## Phase 3 — Smoke test + sign-off
+
+- [ ] All 14 smoke tests in runbook Phase 3 pass
+- [ ] Parents confirm room prices and copy
+- [ ] Placeholder photos acceptable for now
+
+## Phase 4 — DNS cutover (marevaplaya.com.mx)
+
+- [ ] [DNS snapshot](./DNS-SNAPSHOT-TEMPLATE.md) completed
+- [ ] MX records screenshot saved
+- [ ] Custom domains added in Cloudflare Pages
+- [ ] Web CNAME/A added in Google DNS only (MX untouched)
+- [ ] www redirects to apex
+- [ ] HTTPS valid on production domain
+- [ ] Email to `info@` and `reservas@` still works
+- [ ] Contact form works on production domain
+
+## Phase 5 — Search & GBP
+
+- [ ] Google Search Console property added
+- [ ] Sitemap submitted
+- [ ] Google Business Profile URL updated
+
+## Phase 6 — Deferred
+
+- [ ] marevaplaya.com registrar identified
+- [ ] .com → .com.mx 301 redirect configured
+- [ ] SEMSEO canceled
+- [ ] High-res photos (see PHOTO-SWAP.md)

@@ -2,7 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getUi } from '../i18n';
 
-const locale = 'es' as const;
+const path = Astro.url.pathname;
+const isEnglish = path.startsWith('/en');
+const locale = isEnglish ? ('en' as const) : ('es' as const);
 const t = getUi(locale);
 ---
 
@@ -10,14 +12,14 @@ const t = getUi(locale);
   locale={locale}
   title={`${t.pages.notFound.title} — Mareva Playa`}
   description={t.pages.notFound.description}
-  currentPath="/404"
+  currentPath={path}
 >
   <section class="mx-auto flex max-w-6xl flex-col items-center px-4 py-24 text-center sm:px-6">
     <p class="font-display text-6xl font-semibold text-ocean-700">404</p>
     <h1 class="mt-4 text-2xl text-ocean-900">{t.pages.notFound.title}</h1>
     <p class="mt-2 text-ocean-800/80">{t.pages.notFound.description}</p>
     <a
-      href="/"
+      href={isEnglish ? '/en/' : '/'}
       class="mt-8 inline-flex rounded-lg bg-ocean-700 px-6 py-3 text-sm font-medium text-white hover:bg-ocean-800"
     >
       {t.pages.notFound.back}

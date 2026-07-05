@@ -36,9 +36,5 @@ export function hotelJsonLd(locale: Locale) {
       longitude: -99.8236,
     },
     priceRange: '$$',
-    starRating: {
-      '@type': 'Rating',
-      ratingValue: '4',
-    },
   };
 }

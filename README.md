@@ -72,7 +72,11 @@ Example: change `"image": "/images/rooms/king.svg"` → `"image": "/images/rooms
 
 See [docs/DEPLOY.md](./docs/DEPLOY.md) for Cloudflare Pages setup and DNS cutover (Phase 5A / 5B).
 
-**Launch steps:** [docs/LAUNCH-CHECKLIST.md](./docs/LAUNCH-CHECKLIST.md)
+**Launch steps:** [docs/LAUNCH-CHECKLIST.md](./docs/LAUNCH-CHECKLIST.md)  
+**Next step (start here):** [docs/NEXT-STEPS.md](./docs/NEXT-STEPS.md)  
+**Full deploy runbook:** [docs/DEPLOY-RUNBOOK.md](./docs/DEPLOY-RUNBOOK.md)  
+**Launch checklist:** [docs/LAUNCH-CHECKLIST.md](./docs/LAUNCH-CHECKLIST.md)  
+**Quality audit:** [docs/QUALITY-AUDIT.md](./docs/QUALITY-AUDIT.md)
 
 ## URLs
 

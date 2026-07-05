@@ -23,7 +23,7 @@ if (-not $remote) {
 
 Write-Host "Creating repository (if needed) and pushing..."
 gh repo create Selgadis84/mareva-playa --public --source=. --remote=origin `
-    --description "Mareva Playa hotel website — Astro static site (ES/EN)" `
+    --description "Mareva Playa hotel website - Astro static site (ES/EN)" `
     --push
 
 if ($LASTEXITCODE -ne 0) {

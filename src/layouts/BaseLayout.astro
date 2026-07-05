@@ -31,7 +31,7 @@ const ogImage = new URL('/og-image.svg', siteUrl).href;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="es-MX" href={locale === 'es' ? canonical : new URL(getAlternatePath(currentPath, 'es'), siteUrl).href} />
-    <link rel="alternate" hreflang="en" href={locale === 'en' ? canonical : altUrl} />
+    <link rel="alternate" hreflang="en-US" href={locale === 'en' ? canonical : altUrl} />
     <link rel="alternate" hreflang="x-default" href={new URL(getAlternatePath(currentPath, 'es'), siteUrl).href} />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -54,8 +54,14 @@ const ogImage = new URL('/og-image.svg', siteUrl).href;
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body class="flex min-h-screen flex-col">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-ocean-700 focus:px-4 focus:py-2 focus:text-white"
+    >
+      {locale === 'es' ? 'Saltar al contenido' : 'Skip to content'}
+    </a>
     <Header locale={locale} currentPath={currentPath} />
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     <Footer locale={locale} />
